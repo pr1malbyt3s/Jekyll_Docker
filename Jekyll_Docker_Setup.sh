@@ -6,20 +6,22 @@ NC='\033[0m'
 
 #Ensure container not already running.
 echo -e "${GREEN}Ensuring Jekyll container not already running.${NC}"
-docker stop jekyll_jungle > /dev/null 2>&1
+docker stop jekyll_jungle &>/dev/null
 sleep 2
-docker rm jekyll_jungle > /dev/null 2>&1
+docker rm jekyll_jungle &>/dev/null
 
 #Ask user where they want to create directory for files.
+read -p "$(echo -e ${GREEN}"Please enter the directory to be used for the container volume: "${NC})" vol_path
 
 #Ask user who they want to own the files.
+read -p "$(echo -e ${GREEN}"Please enter the user who will own the volume directory: "${NC})" dir_owner
 
 #Make volume directory for hosting.
 echo -e "${GREEN}Creating volume for file hosting.${NC}"
-rm -rf /home/al33w6/test2
-mkdir /home/al33w6/test2
-cd /home/al33w6/test2
-chown -R al33w6:al33w6 /home/al33w6/test2
+rm -rf $vol_path &>/dev/null
+mkdir $vol_path
+cd $vol_path
+chown -R $dir_owner:$dir_owner .
 
 #Initialize Jekyll container. Bind localhost port to docker port and give time for startup.
 echo -e "${GREEN}Starting Jekyll container.${NC}"
@@ -30,6 +32,4 @@ sleep 3
 docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d -p 127.0.0.1:4443:4000 jekyll/jekyll jekyll serve --watch
 sleep 3
 
-#docker exec -it jekyll_jungle /bin/bash -c "jekyll new ."
-#sleep 3
-#docker exec -it jekyll_jungle /bin/bash -c "jekyll serve"
+chown -R $dir_owner:$dir_owner .
