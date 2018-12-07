@@ -27,7 +27,7 @@ chown -R $dir_owner:$dir_owner .
 echo -e "${GREEN}Starting Jekyll container.${NC}"
 docker run --rm -v $PWD:/srv/jekyll -it jekyll/jekyll jekyll new .
 sleep 3
-sed -i 's/minima/just-the-docs/g' Gemfile
+sed -i 's/minima/just-the-docs/g' Gemfile _config.yml
 sed -i 's/2.0/0.2.1/g' Gemfile
 
 docker run --rm -v $PWD:/srv/jekyll -it jekyll/jekyll jekyll build
