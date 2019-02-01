@@ -30,7 +30,7 @@ sleep 3
 
 docker run --rm -v $PWD:/srv/jekyll -it jekyll/jekyll jekyll build
 sleep 3
-docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d -p 127.0.0.1:4443:4000 jekyll/jekyll jekyll serve --watch --drafts
+docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d -p 127.0.0.1:3000:4000 jekyll/jekyll jekyll serve --watch --drafts
 sleep 3
 
 chown -R $dir_owner:$dir_owner .
