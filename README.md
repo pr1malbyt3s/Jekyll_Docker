@@ -1,10 +1,5 @@
 # Jekyll_Docker
 
-Config.yml notes:  
--Change title  
--Change email  
--Change description  
--Change url  
--Comment out twitter  
--Comment out github  
--Add just the docs theme?  
+-Change gems in gemfile and run bundle update.
+-Rename index.md to index.html after changing the appropriate layout.
+
