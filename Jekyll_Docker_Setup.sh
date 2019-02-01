@@ -19,7 +19,7 @@ read -p "$(echo -e ${GREEN}"Please enter the user who will own the volume direct
 #Make volume directory for hosting.
 echo -e "${GREEN}Creating volume for file hosting.${NC}"
 rm -rf $vol_path &>/dev/null
-mkdir $vol_path
+mkdir -p $vol_path
 cd $vol_path
 chown -R $dir_owner:$dir_owner .
 
