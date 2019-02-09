@@ -1,4 +1,4 @@
-# Jekyll_Docker
+# Jekyll_Debian
 
 This script will generate a docker container (tested for Debian) running Jekyll with the default Minima theme and configurations.  
 -To make changes to the configuration and general information fields, update the "_config.yml" file.
