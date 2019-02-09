@@ -7,7 +7,7 @@ MAINTAINER pr1malbyt3s
 #Update current packages.
 RUN apt-get update
 
-#Install necessary Ruby gems to run jekyll.
+#Install necessary Ruby gems to run Jekyll.
 RUN gem install \
 	github-pages \
 	jekyll \
@@ -31,5 +31,5 @@ RUN mkdir -p /srv/jekyll && \
 #Assign working directory.	
 WORKDIR /srv/jekyll
 
-#Open port for access to jekyll pages.
+#Open port for access to Jekyll pages.
 EXPOSE 4000
