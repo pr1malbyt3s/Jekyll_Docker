@@ -9,19 +9,18 @@ RUN apt-get update
 
 #Install necessary Ruby gems to run Jekyll.
 RUN gem install \
+	bundler \
 	github-pages \
 	jekyll \
 	jekyll-redirect-from \
-	bundler \
 	kramdown \
+	rake \
 	rdiscount \
 	rouge
 
 #Create user jekyll.
-RUN mkdir -p /home/jekyll && \
-	addgroup Sg 1000 jekyll && \
-	adduser -SG jekyll -u 1000 -h /home/jekyll jekyll && \
-	chown jekyll:jekyll /home/jekyll
+RUN groupadd -g 1000 jekyll && \
+	useradd -d /home/jekyll -m -g jekyll -u 1000 jekyll
 
 #Make working directory for Jekyll and give jekyll user sudo privileges.
 RUN mkdir -p /srv/jekyll && \
