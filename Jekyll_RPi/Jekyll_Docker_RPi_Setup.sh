@@ -32,6 +32,6 @@ sleep 3
 rm Gemfile.lock
 docker run --rm -v $PWD:/srv/jekyll -it pr1malbyt3s/jekyll_Rpi build
 sleep 3
-docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d --network=host pr1malbyt3s/jekyll_Rpi serve --watch --drafts --incremental
+docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d -p 127.0.0.1:3000:4000 pr1malbyt3s/jekyll_Rpi serve --watch --drafts --incremental
 sleep 3
 chown -R $dir_owner:$dir_owner .
