@@ -40,5 +40,8 @@ EXPOSE 4000
 #Assign working directory.	
 WORKDIR /srv/jekyll
 
+#Switch to user jekyll.
+USER jekyll
+
 #Set entry point.
 ENTRYPOINT ["jekyll"]
