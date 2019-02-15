@@ -22,14 +22,8 @@ RUN gem install \
 	rdiscount \
 	rouge
 
-#Create user jekyll.
-RUN groupadd -g 1000 jekyll && \
-	useradd -d /home/jekyll -m -g jekyll -u 1000 jekyll && \
-	echo 'jekyll ALL=NOPASSWD:ALL' >> /etc/sudoers
-
-#Make working directory for Jekyll and give jekyll user sudo privileges.
-RUN mkdir -p /srv/jekyll && \
-	chown jekyll:jekyll /srv/jekyll
+#Make working directory for Jekyll.
+RUN mkdir -p /srv/jekyll
 
 #Assign volume.
 VOLUME /srv/jekyll
@@ -39,9 +33,6 @@ EXPOSE 4000
 
 #Assign working directory.	
 WORKDIR /srv/jekyll
-
-#Switch to user jekyll.
-USER jekyll
 
 #Set entry point.
 ENTRYPOINT ["jekyll"]
