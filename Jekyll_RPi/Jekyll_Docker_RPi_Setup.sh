@@ -32,10 +32,10 @@ chown -R $dir_owner:$dir_owner .
 
 #Initialize Jekyll container. Bind localhost port to docker port and give time for startup.
 echo -e "${GREEN}Starting Jekyll container.${NC}"
-docker run --rm -v $PWD:/srv/jekyll -it pr1malbyt3s/jekyll_rpi new .
+docker run --rm -v $PWD:/srv/jekyll -it pr1malbyt3s/jekyll_rpi_base new .
 sleep 3
-docker run --rm -v $PWD:/srv/jekyll -it pr1malbyt3s/jekyll_rpi build
+docker run --rm -v $PWD:/srv/jekyll -it pr1malbyt3s/jekyll_rpi_base build
 sleep 3
-docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d --network=host --restart=always pr1malbyt3s/jekyll_rpi serve --watch --drafts --incremental
+docker run --name jekyll_jungle -v $PWD:/srv/jekyll -d --network=host --restart=always pr1malbyt3s/jekyll_rpi_base serve --watch --drafts --incremental
 sleep 3
 chown -R $dir_owner:$dir_owner .
